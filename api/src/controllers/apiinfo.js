@@ -1,10 +1,11 @@
 const axios = require("axios");
 const { Dog } = require("../db");
+const { YOUR_API_KEY } = process.env;
 
 const getApiInfo = async () => {
   try {
     const apiUrl = await axios(
-      `https://api.thedogapi.com/v1/breeds?api_key=87eabccf-ef2f-4e84-a4e8-92394054aca2`
+      `https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`
     );
     apiUrl.data.map(async (e) => {
       await Dog.findOrCreate({
