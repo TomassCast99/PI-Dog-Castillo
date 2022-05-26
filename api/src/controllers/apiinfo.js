@@ -11,7 +11,7 @@ const getApiInfo = async () => {
       await Dog.findOrCreate({
         where: {
           name: e.name,
-          id: e.id,
+          //id: e.id,
           weight: e.weight.imperial,
           height: e.height.imperial,
           life_span: e.life_span,

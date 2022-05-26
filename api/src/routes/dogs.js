@@ -2,11 +2,12 @@ const router = require("express").Router();
 
 const { Dog, Temp } = require("../db");
 const axios = require("axios");
-const { YOUR_API_KEY } = process.env;
 
 router.get("/", async (req, res) => {
   const { name } = req.query;
-  const totalRaz = await Dog.findAll();
+  const totalRaz = await Dog.findAll({
+    includes: { model: Temp, attributes: ["name"], as: "temperament" },
+  });
 
   if (!name) {
     res.json(totalRaz); // si el nombre no existe que te traiga todos los pichilos
@@ -28,7 +29,7 @@ router.get("/:id", async (req, res) => {
   const totalRaz = await Dog.findAll();
 
   // Buscar en  la DB
-  if (id.includes("-")) {
+  if (id) {
     const dogDB = await totalRaz.findOne({
       where: {
         id,
@@ -38,17 +39,8 @@ router.get("/:id", async (req, res) => {
     return res.send(
       dogDB || { error: "ID no coincide con las razas guardadas" }
     );
-  }
-  // Buscar en la Api
-  if (id) {
-    let idDog = await axios(
-      `https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`
-    );
-    idDog = await idDog.data;
-    const totalApiRaz = idDog.filter((r) => r.id === Number(id))[0];
-    return res.json(totalApiRaz || { error: "ID no coincide con las razas" });
   } else {
-    return res.status(400).send("Raza especifica no encontrada");
+    return res.status(400).send("Ingrese un ID");
   }
 });
 

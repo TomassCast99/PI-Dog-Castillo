@@ -10,10 +10,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id: {
-        type: DataTypes.INTEGER, // identificador universal de sequelize, id unico compuesto de letras, numeros y es aleatorio.
-        allowNull: false,
-        primaryKey: true,
+      temperament: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       weight: {
         type: DataTypes.STRING,
@@ -23,10 +22,6 @@ module.exports = (sequelize) => {
       },
       life_span: {
         type: DataTypes.STRING,
-      },
-      temperament: {
-        type: DataTypes.STRING,
-        allowNull: false,
       },
       image: {
         type: DataTypes.STRING,
