@@ -27,8 +27,27 @@ function Navbar() {
 
   return (
     <div className="nav-container">
-      <ul className={click ? "nav-menu active " : "nav-menu"}>
-        <li className="nav-item">
+      <Link to="/dog">
+        <button buttonStyle={"btn--primary"} buttonSize={"btn--large"}>
+          Create Dog
+        </button>
+      </Link>
+      {/* <Link to="/">
+        <button  buttonStyle={"btn--primary"} buttonSize={"btn--large"}>Create Choco</button>
+      </Link> */}
+      <Link to="/about">
+        <button buttonStyle={"btn--primary"} buttonSize={"btn--large"}>
+          About
+        </button>
+      </Link>
+      <Link to="/">
+        <button buttonStyle={"btn--primary"} buttonSize={"btn--large"}>
+          Log Out
+        </button>
+      </Link>
+
+      <div className={click ? "nav-menu active " : "nav-menu"}>
+        <div className="nav-item">
           <select>
             <option className="nav-links" onClick={closeMobileMenu} value="asc">
               A-Z
@@ -56,7 +75,7 @@ function Navbar() {
               onClick={closeMobileMenu}
               value="height"
             >
-              Height
+              All Dogs
             </option>
           </select>
           <select>
@@ -74,11 +93,11 @@ function Navbar() {
               onClick={closeMobileMenu}
               value="weight"
             >
-              Weight
+              Created Dogs
             </option>
           </select>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
 
     // <>
@@ -93,28 +112,28 @@ function Navbar() {
 
     ///------------ hasta aca es para renderizar el logo de la navbar, tambien esta el handleClick que sirve para hacer y deshacer el menu hamb
 
-    //       <ul className={click ? "nav-menu active " : "nav-menu"}>
-    //         <li className="nav-item">
+    //       <div className={click ? "nav-menu active " : "nav-menu"}>
+    //         <div className="nav-item">
     //           <Link to="/" className="nav-links" onClick={closeMobileMenu}>
     //             Home
     //           </Link>
-    //         </li>
-    //         <li className="nav-item">
+    //         </div>
+    //         <div className="nav-item">
     //           <Link to="/dogs" className="nav-links" onClick={closeMobileMenu}>
     //             Dogs
     //           </Link>
-    //         </li>
-    //         <li className="nav-item">
+    //         </div>
+    //         <div className="nav-item">
     //           <Link to="/dog" className="nav-links" onClick={closeMobileMenu}>
     //             Create
     //           </Link>
-    //         </li>
-    //         <li className="nav-item">
+    //         </div>
+    //         <div className="nav-item">
     //           <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
     //             About
     //           </Link>
-    //         </li>
-    //       </ul>
+    //         </div>
+    //       </div>
     //       {button && <Boton buttonStyle="btn--outline">About</Boton>}
     //     </div>
     //   </nav>

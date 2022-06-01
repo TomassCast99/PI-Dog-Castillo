@@ -14,7 +14,6 @@ export default function Cards() {
   }, [dispatch]);
 
   const [currentPage, setCurrentPage] = useState(1);
-
   const [dogsPerPage] = useState(8);
 
   const indexLastDog = currentPage * dogsPerPage;

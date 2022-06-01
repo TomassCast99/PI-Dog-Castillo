@@ -1,7 +1,7 @@
 import React from "react";
 // import "../App.css";
 import "./Home.css";
-import Cards from "../Cards/Cards";
+import Cards from "../AllCards/Cards";
 import Navbar from "../Navbar/Navbar";
 
 export default function Home() {
