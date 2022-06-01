@@ -8,22 +8,19 @@ export default function Paginated({ dogsPerPage, useDogs, paginated }) {
   }
 
   return (
-    <div>
-      <div className="paginated">
-        {pageNumbers.length > 1 &&
-          pageNumbers.map((number) => {
-            return (
-              <ul key={number}>
-                <button
-                  className="botonPaginado"
-                  onClick={() => paginated(number)}
-                >
-                  {number}
-                </button>
-              </ul>
-            );
-          })}
-      </div>
+    <div className="paginated">
+      {pageNumbers.length > 1 &&
+        pageNumbers.map((number) => {
+          return (
+            <button
+              key={number}
+              className="botonPaginado"
+              onClick={() => paginated(number)}
+            >
+              {number}
+            </button>
+          );
+        })}
     </div>
   );
 }

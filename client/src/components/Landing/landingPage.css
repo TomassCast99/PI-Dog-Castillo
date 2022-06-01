@@ -1,10 +1,4 @@
-.tittle{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
+*{
     color:#db3a34;
-    font-family: 'Montserrat', sans-serif;
-   margin-left: 200px;
-   margin-top: 300px;   
+    font-family: 'Montserrat', sans-serif; 
 } 

@@ -14,14 +14,14 @@ export function getDogs() {
   };
 }
 
-export function getTemperaments(payload) {
+export function getTemperaments() {
   return function (dispatch) {
     axios
       .get("http://localhost:3001/temperaments")
       .then((res) => {
         return dispatch({
           type: "GET_ALL_TEMPERAMENTS",
-          payload,
+          payload: res.data,
         });
       })
       .catch((err) => console.log(err));

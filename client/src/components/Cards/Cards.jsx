@@ -13,31 +13,34 @@ export default function Cards() {
     dispatch(getDogs());
   }, [dispatch]);
 
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // const [dogsPerPage, setDogsPerPage] = useState(8);
+  const [dogsPerPage] = useState(8);
 
-  // const indexLastDog = currentPage * dogsPerPage;
-  // const indexFirstDog = indexLastDog - setDogsPerPage;
-  // const currentDogs = useDogs.slice(indexFirstDog, indexLastDog);
+  const indexLastDog = currentPage * dogsPerPage;
+  const indexFirstDog = indexLastDog - dogsPerPage;
+  const currentDogs = useDogs.slice(indexFirstDog, indexLastDog);
 
-  // const paginado = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
-      {useDogs.length > 0 ? (
-        useDogs.map((d) => {
+      <Paginated
+        dogsPerPage={dogsPerPage}
+        useDogs={useDogs.length}
+        paginated={paginado}
+      />
+      {currentDogs.length > 0 ? (
+        currentDogs.map((d) => {
           return (
             <div key={d.id}>
               <Card
                 name={d.name}
                 image={d.image}
-                life_span={d.life_span}
                 temperament={d.temperament}
                 weight={d.weight}
-                height={d.height}
               />
             </div>
           );
