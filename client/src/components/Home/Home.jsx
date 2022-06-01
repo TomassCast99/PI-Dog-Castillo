@@ -1,16 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Card from "../Card/Card";
+import { useSelector, useDispatch } from "react-redux";
+import { getDogs } from "../../redux/actions/actions";
+import Paginated from "../Paginated/Paginated";
 // import "../App.css";
-import "./Home.css";
-import Cards from "../AllCards/Cards";
+// import "./Home.css";
 import Navbar from "../Navbar/Navbar";
 
 export default function Home() {
-  // hay que seguir el video de selene, solo llegaste al minuto 3 drogon
+  const dispatch = useDispatch();
+  const useDogs = useSelector((state) => {
+    return state.allDogs;
+  });
+  useEffect(() => {
+    dispatch(getDogs());
+  }, [dispatch]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dogsPerPage] = useState(8);
+
+  const indexLastDog = currentPage * dogsPerPage;
+  const indexFirstDog = indexLastDog - dogsPerPage;
+  const currentDogs = useDogs.slice(indexFirstDog, indexLastDog);
+
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
       <Navbar />
-      <Cards />
+      <Paginated
+        dogsPerPage={dogsPerPage}
+        useDogs={useDogs.length}
+        paginated={paginado}
+      />
+      {currentDogs.length > 0 ? (
+        currentDogs.map((d) => {
+          return (
+            <div key={d.id}>
+              <Card
+                name={d.name}
+                image={d.image}
+                temperament={d.temperament}
+                weight={d.weight}
+              />
+            </div>
+          );
+        })
+      ) : (
+        <h1>Ups! Dog not found</h1>
+      )}
     </div>
   );
 }
@@ -33,5 +73,3 @@ export default function Home() {
 //     </div>
 //   );
 // }
-
-// export default Home;

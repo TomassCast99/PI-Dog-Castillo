@@ -16,3 +16,16 @@ export default function Card({ name, image, temperament, weight }) {
     </div>
   );
 }
+
+// <>
+//   <li className="card_item">
+//     <Link className="card_item_link">
+//       <figure className="card_item_pic-wrap">
+//         <img src="/" alt="Nombre Perro" className="card_item_img"></img>
+//       </figure>
+//       <div className="card_item_info">
+//         <h5 className="card_item_name">sadfasdf</h5>
+//       </div>
+//     </Link>
+//   </li>
+// </>
