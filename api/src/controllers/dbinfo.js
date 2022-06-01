@@ -12,4 +12,4 @@ const infoDB = async () => {
   });
 };
 
-module.exports = infoDB;
+module.exports = { infoDB };

@@ -1,46 +1,70 @@
 const router = require("express").Router();
 
-const { Dog, Temp } = require("../db");
-const axios = require("axios");
+const { Dog, Temp, Op } = require("../db");
 
 router.get("/", async (req, res) => {
-  const { name } = req.query;
-  const totalRaz = await Dog.findAll({
-    includes: { model: Temp, attributes: ["name"], as: "temperament" },
-  });
+  try {
+    const { name } = req.query;
 
-  if (!name) {
-    res.json(totalRaz); // si el nombre no existe que te traiga todos los pichilos
-  } else {
-    const perro = totalRaz.filter((e) => {
-      const name = e.name.toUpperCase();
-      if (name.includes(name.toUpperCase())) return name;
-    });
-    if (!perro) {
-      return res.json(perro);
+    if (!name) {
+      const totalRaz = await Dog.findAll({
+        includes: {
+          model: Temp,
+          attributes: ["name"],
+          through: { temperament: [] },
+        },
+      });
+      res.json(totalRaz); // si el nombre no existe que te traiga todos los pichilos
     } else {
-      return res.status(400).send("No se encuentra la raza pedida");
+      const nameDog = await Dog.findAll({
+        where: {
+          name: {
+            [Op.iLike]: `%${name}%`,
+          },
+        },
+        includes: {
+          model: Temp,
+          attributes: ["name"],
+          through: { temperament: [] },
+        },
+      });
+      if (nameDog) {
+        res.json(nameDog);
+      } else {
+        return res.status(404).send("No se encuentra la raza pedida");
+      }
     }
+  } catch (error) {
+    console.log(error);
   }
 });
 
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  const totalRaz = await Dog.findAll();
+  try {
+    const { id } = req.params;
 
-  // Buscar en  la DB
-  if (id) {
-    const dogDB = await totalRaz.findOne({
-      where: {
-        id,
-      },
-      include: { model: Temp, as: "temperament", attributes: ["name"] },
-    });
-    return res.send(
-      dogDB || { error: "ID no coincide con las razas guardadas" }
-    );
-  } else {
-    return res.status(400).send("Ingrese un ID");
+    if (id) {
+      const dogDB = await Dog.findOne({
+        where: {
+          id: id,
+        },
+        includes: {
+          model: Temp,
+          attributes: ["name"],
+          through: { temperament: [] },
+        },
+      });
+
+      if (dogDB) {
+        return res.json(dogDB);
+      } else {
+        return res.status(404).send("ID no se encuentra en la base de datos");
+      }
+    } else {
+      return res.status(404).send("ID no valido");
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
