@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
+import Paginated from "../Paginated/Paginated";
+import Navbar from "../Navbar/Navbar";
+
 import { useSelector, useDispatch } from "react-redux";
 import { getDogs } from "../../redux/actions/actions";
-import Paginated from "../Paginated/Paginated";
+
 // import "../App.css";
 // import "./Home.css";
-import Navbar from "../Navbar/Navbar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -27,9 +29,24 @@ export default function Home() {
     setCurrentPage(pageNumber);
   };
 
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(getDogs());
+  }
+
   return (
     <div>
-      <Navbar />
+      <h1>
+        HenryDogs <i className="fa-solid fa-paw"></i>
+      </h1>
+      <button
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
+        Reload Dogs
+      </button>
+      <Navbar paginated={paginado} />
       <Paginated
         dogsPerPage={dogsPerPage}
         useDogs={useDogs.length}

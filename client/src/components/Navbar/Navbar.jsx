@@ -1,144 +1,97 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  handleFilter,
+  getTemperaments,
+  cleanFilters,
+} from "../../redux/actions/actions";
 
 import "./Navbar.css";
 
-function Navbar() {
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+export default function Navbar({ paginated }) {
+  const dispatch = useDispatch();
 
-  const handleClick = () => setClick(!click);
+  const [temperament, setTemperament] = useState("All");
+  const [origin, setOrigin] = useState("All");
 
-  const closeMobileMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
-
+  const useTemp = useSelector((state) => {
+    return state.temperament;
+  });
   useEffect(() => {
-    showButton();
-  }, []);
+    dispatch(getTemperaments());
+  }, [dispatch]);
 
-  window.addEventListener("resize", showButton);
+  function handleClickFilter(e) {
+    e.preventDefault();
+    dispatch(handleFilter({ temperament, origin }));
+  }
+
+  const handleCleanFilters = (e) => {
+    e.preventDefault();
+    dispatch(cleanFilters());
+  };
 
   return (
     <div className="nav-container">
       <Link to="/dog">
-        <button buttonStyle={"btn--primary"} buttonSize={"btn--large"}>
-          Create Dog
-        </button>
+        <button>Create Dog</button>
       </Link>
-      {/* <Link to="/">
-        <button  buttonStyle={"btn--primary"} buttonSize={"btn--large"}>Create Choco</button>
-      </Link> */}
       <Link to="/about">
-        <button buttonStyle={"btn--primary"} buttonSize={"btn--large"}>
-          About
-        </button>
+        <button>About</button>
       </Link>
       <Link to="/">
-        <button buttonStyle={"btn--primary"} buttonSize={"btn--large"}>
-          Log Out
-        </button>
+        <button>Log Out</button>
       </Link>
-
-      <div className={click ? "nav-menu active " : "nav-menu"}>
+      <button className="nav-links" onClick={handleCleanFilters} value="all">
+        Clean Filters
+      </button>
+      <div>
         <div className="nav-item">
           <select>
-            <option className="nav-links" onClick={closeMobileMenu} value="asc">
+            <option className="nav-links" value="asc">
               A-Z
             </option>
-            <option
-              className="nav-links"
-              onClick={closeMobileMenu}
-              value="desc"
-            >
+            <option className="nav-links" value="desc">
               Z-A
             </option>
           </select>
           <select>
-            <option
-              className="nav-links"
-              onClick={closeMobileMenu}
-              value="find"
-            >
+            <option className="nav-links" value="find">
               Find
             </option>
           </select>
-          <select>
-            <option
-              className="nav-links"
-              onClick={closeMobileMenu}
-              value="height"
-            >
-              All Dogs
-            </option>
-          </select>
-          <select>
-            <option
-              className="nav-links"
-              onClick={closeMobileMenu}
-              value="temperament"
-            >
+          <select
+            value={temperament}
+            onChange={(e) => setTemperament(e.target.value)}
+          >
+            <option className="nav-links" value="All">
               Temperament
             </option>
+            {useTemp &&
+              useTemp
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
+                .map((t) => (
+                  <option key={t.id} value={t.name}>
+                    {" "}
+                    {t.name}{" "}
+                  </option>
+                ))}
           </select>
-          <select>
-            <option
-              className="nav-links"
-              onClick={closeMobileMenu}
-              value="weight"
-            >
+          <select value={origin} onChange={(e) => setOrigin(e.target.value)}>
+            <option className="nav-links" value="All">
+              All Dogs
+            </option>
+            <option className="nav-links" value="apiDogs">
+              Dogs
+            </option>
+            <option className="nav-links" value="dbDogs">
               Created Dogs
             </option>
           </select>
+          <button onClick={(e) => handleClickFilter(e)}>Filter</button>
         </div>
       </div>
     </div>
-
-    // <>
-    //   <nav className="navbar">
-    //     <div clasName="navbar-container">
-    //       <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-    //         HenryDogs <i className="fa-solid fa-paw"></i>
-    //       </Link>
-    //       <div className="menu-icon" onClick={handleClick}>
-    //         <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
-    //       </div>
-
-    ///------------ hasta aca es para renderizar el logo de la navbar, tambien esta el handleClick que sirve para hacer y deshacer el menu hamb
-
-    //       <div className={click ? "nav-menu active " : "nav-menu"}>
-    //         <div className="nav-item">
-    //           <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-    //             Home
-    //           </Link>
-    //         </div>
-    //         <div className="nav-item">
-    //           <Link to="/dogs" className="nav-links" onClick={closeMobileMenu}>
-    //             Dogs
-    //           </Link>
-    //         </div>
-    //         <div className="nav-item">
-    //           <Link to="/dog" className="nav-links" onClick={closeMobileMenu}>
-    //             Create
-    //           </Link>
-    //         </div>
-    //         <div className="nav-item">
-    //           <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
-    //             About
-    //           </Link>
-    //         </div>
-    //       </div>
-    //       {button && <Boton buttonStyle="btn--outline">About</Boton>}
-    //     </div>
-    //   </nav>
-    // </>
   );
 }
-
-export default Navbar;

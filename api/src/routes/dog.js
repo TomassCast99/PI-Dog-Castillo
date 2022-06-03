@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
       weight: weight,
       life_span: life_span,
       image: image,
+      createdInBd: true,
     });
 
     const tempID = await Temp.findAll({

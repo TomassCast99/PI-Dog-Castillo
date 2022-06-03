@@ -17,7 +17,7 @@ export function getDogs() {
 export function getTemperaments() {
   return function (dispatch) {
     axios
-      .get("http://localhost:3001/temperaments")
+      .get("http://localhost:3001/temperament")
       .then((res) => {
         return dispatch({
           type: "GET_ALL_TEMPERAMENTS",
@@ -25,13 +25,6 @@ export function getTemperaments() {
         });
       })
       .catch((err) => console.log(err));
-  };
-}
-
-export function filterTemperament(payload) {
-  return {
-    type: "FILTER_TEMPERAMENT",
-    payload,
   };
 }
 
@@ -60,5 +53,19 @@ export function getDetail(id) {
         });
       })
       .catch((err) => console.log(err));
+  };
+}
+
+export function handleFilter(payload) {
+  return {
+    type: "HANDLE_FILTERS",
+    payload: payload,
+  };
+}
+
+export function cleanFilters(payload) {
+  return {
+    type: "CLEAN_FILTERS",
+    payload: payload,
   };
 }
