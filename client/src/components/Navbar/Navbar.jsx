@@ -5,15 +5,19 @@ import {
   handleFilter,
   getTemperaments,
   cleanFilters,
+  handlerWeight,
 } from "../../redux/actions/actions";
 
 import "./Navbar.css";
+import Search from "../SearchBar/searchBar";
 
 export default function Navbar({ paginated }) {
   const dispatch = useDispatch();
 
   const [temperament, setTemperament] = useState("All");
   const [origin, setOrigin] = useState("All");
+
+  const [weight, setWeight] = useState("Todos");
 
   const useTemp = useSelector((state) => {
     return state.temperament;
@@ -32,6 +36,11 @@ export default function Navbar({ paginated }) {
     dispatch(cleanFilters());
   };
 
+  function handleClickWeight(e) {
+    e.preventDefault();
+    dispatch(handlerWeight(weight));
+  }
+
   return (
     <div className="nav-container">
       <Link to="/dog">
@@ -48,19 +57,21 @@ export default function Navbar({ paginated }) {
       </button>
       <div>
         <div className="nav-item">
-          <select>
-            <option className="nav-links" value="asc">
-              A-Z
+          <select value={weight} onChange={(e) => setWeight(e.target.value)}>
+            <option className="nav-links" value="Todos">
+              All
             </option>
-            <option className="nav-links" value="desc">
-              Z-A
+            <option className="nav-links" value="light">
+              Light-Heavy
             </option>
-          </select>
-          <select>
-            <option className="nav-links" value="find">
-              Find
+            <option className="nav-links" value="heavy">
+              Heavy-Light
             </option>
           </select>
+
+          <button onClick={(e) => handleClickWeight(e)}>Order weight</button>
+
+          <Search />
           <select
             value={temperament}
             onChange={(e) => setTemperament(e.target.value)}

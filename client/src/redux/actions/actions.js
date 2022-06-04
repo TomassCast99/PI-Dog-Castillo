@@ -31,10 +31,10 @@ export function getTemperaments() {
 export function getName(name) {
   return function (dispatch) {
     axios
-      .get("http://localhost:3001/dogs?name=" + name)
+      .get(`http://localhost:3001/dogs?name=` + name)
       .then((res) => {
         return dispatch({
-          type: "GET_NAME",
+          type: "GET_NAME_DOGS",
           payload: res.data,
         });
       })
@@ -53,6 +53,20 @@ export function getDetail(id) {
         });
       })
       .catch((err) => console.log(err));
+  };
+}
+
+export function handlerOrder(payload) {
+  return {
+    type: "HANDLER_NAME",
+    payload: payload,
+  };
+}
+
+export function handlerWeight(payload) {
+  return {
+    type: "HANDLER_WEIGHT",
+    payload: payload,
   };
 }
 

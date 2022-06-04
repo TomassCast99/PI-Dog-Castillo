@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import Paginated from "../Paginated/Paginated";
 import Navbar from "../Navbar/Navbar";
+import SortFilter from "../Filters/sortFilter";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getDogs } from "../../redux/actions/actions";
@@ -20,6 +21,8 @@ export default function Home() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage] = useState(8);
+
+  const [act, setAct] = useState("");
 
   const indexLastDog = currentPage * dogsPerPage;
   const indexFirstDog = indexLastDog - dogsPerPage;
@@ -47,6 +50,7 @@ export default function Home() {
         Reload Dogs
       </button>
       <Navbar paginated={paginado} />
+      <SortFilter setCurrentPage={setCurrentPage} setAct={setAct} />
       <Paginated
         dogsPerPage={dogsPerPage}
         useDogs={useDogs.length}
