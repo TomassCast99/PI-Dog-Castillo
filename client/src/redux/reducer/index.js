@@ -132,6 +132,11 @@ export default function reducer(state = initialState, { type, payload }) {
         detail: payload,
       };
 
+    case "RES_STATE":
+      return {
+        ...state,
+        detail: [],
+      };
     default:
       return state;
   }

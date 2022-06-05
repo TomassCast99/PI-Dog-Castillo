@@ -43,12 +43,6 @@ export default function Navbar({ paginated }) {
 
   return (
     <div className="nav-container">
-      <Link to="/dog">
-        <button>Create Dog</button>
-      </Link>
-      <Link to="/about">
-        <button>About</button>
-      </Link>
       <Link to="/">
         <button>Log Out</button>
       </Link>

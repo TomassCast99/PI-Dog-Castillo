@@ -83,3 +83,9 @@ export function cleanFilters(payload) {
     payload: payload,
   };
 }
+
+export function resState() {
+  return {
+    type: "RES_STATE",
+  };
+}

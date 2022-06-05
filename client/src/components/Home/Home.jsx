@@ -3,9 +3,11 @@ import Card from "../Card/Card";
 import Paginated from "../Paginated/Paginated";
 import Navbar from "../Navbar/Navbar";
 import SortFilter from "../Filters/sortFilter";
+import CreateDog from "../Create/CreateDog";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getDogs } from "../../redux/actions/actions";
+import { Link } from "react-router-dom";
 
 // import "../App.css";
 // import "./Home.css";
@@ -49,6 +51,7 @@ export default function Home() {
       >
         Reload Dogs
       </button>
+      <Link to={"/dog"}>Create Dog</Link>
       <Navbar paginated={paginado} />
       <SortFilter setCurrentPage={setCurrentPage} setAct={setAct} />
       <Paginated
