@@ -1,31 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Card.css";
 
-/** en el componente CardDog de la linea 15 hay que colocar el src de la imagen de los perros
- * un text
- * una label
- * y el path a /dogs
- */
-
-export default function Card({ name, image, temperament, weight }) {
+export default function Card({ name, image, temperament, weight, id }) {
   return (
-    <div>
-      <h3>{name}</h3>
-      <img src={image} alt="perro" width="200px" height="100px" />
-      <h4>Temperament: {temperament}</h4>
-      <h4>Weight: {weight}</h4>
+    <div className="card">
+      <div className="card__content">
+        <h3 className="card__title">{name}</h3>
+        <figure className="card_item_pic-wrap">
+          <Link to={`/dogs/${id}`}>
+            <img src={image} alt={name} className="card_item_img" />
+          </Link>
+        </figure>
+        <h4 className="card__description">Temperament: {temperament}</h4>
+        <h4 className="card__description">Weight: {weight}</h4>
+      </div>
     </div>
   );
 }
-
-// <>
-//   <li className="card_item">
-//     <Link className="card_item_link">
-//       <figure className="card_item_pic-wrap">
-//         <img src="/" alt="Nombre Perro" className="card_item_img"></img>
-//       </figure>
-//       <div className="card_item_info">
-//         <h5 className="card_item_name">sadfasdf</h5>
-//       </div>
-//     </Link>
-//   </li>
-// </>

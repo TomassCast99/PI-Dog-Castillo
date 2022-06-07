@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
@@ -26,7 +27,8 @@ export const useForm = (initialForm, validateForm) => {
 
     if (Object.keys(errors).length === 0) {
       alert("Sending Form");
-      setLoading(true)
+      setLoading(true);
+      axios
         .post("http://localhost:3001/dog", {
           body: form,
           headers: {
@@ -55,3 +57,20 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmit,
   };
 };
+
+// if (Object.keys(errors).length === 0) {
+//   alert("Sending Form");
+//   setLoading(true);
+//   return async function () {
+//     const create = await axios.post("http://localhost:3001/dog");
+//     return create;
+//   }.then((res) => {
+//     setLoading(false);
+//     setResponse(true);
+//     setForm(initialForm);
+//     setTimeout(() => setResponse(false), 5000);
+//   });
+// } else {
+//   return;
+// }
+// };

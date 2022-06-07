@@ -44,6 +44,7 @@ export function getName(name) {
 
 export function getDetail(id) {
   return function (dispatch) {
+    console.log("aca act", id);
     axios
       .get("http://localhost:3001/dogs/" + id)
       .then((res) => {
@@ -53,6 +54,13 @@ export function getDetail(id) {
         });
       })
       .catch((err) => console.log(err));
+  };
+}
+
+export function postDog(payload) {
+  return async function () {
+    const create = await axios.post("http://localhost:3001/dog", payload);
+    return create;
   };
 }
 

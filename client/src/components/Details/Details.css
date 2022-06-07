@@ -1,0 +1,44 @@
+.imagdetalle{
+    border-radius: 15%;
+    border:5px solid #139182;
+    margin: 80px;
+    width: 400px;
+    height: 400px;
+    
+}
+.imagenLoading{
+    margin-top: 100px;
+}
+.cardDetalle{
+    width: 300px;
+    height: 500px;
+    border: 2px solid #139182;
+    margin: 30px;
+    background-color: rgba(201, 192, 192, 0.856);
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:  #139182;
+}  
+.boton4{
+    color:#f5f8f8;
+    background-color:#139182;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+    border-radius: 10% 10% 10% 10%;
+    font-size: 18px;
+    width: 100px;
+    height: 44px;
+    margin-top:12px;
+    margin-left: -450px;
+}
+.boton4:hover{
+    background-color: #197ae9;  
+
+}
+
+.base3{
+    color: #1a1b1b;
+    padding: 0px;
+    margin: 0%;
+
+}

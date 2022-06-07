@@ -2,7 +2,7 @@ const initialState = {
   dogs: [],
   allDogs: [],
   temperament: [],
-  detail: [],
+  detail: {},
 };
 
 export default function reducer(state = initialState, { type, payload }) {

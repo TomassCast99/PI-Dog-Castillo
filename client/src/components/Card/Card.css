@@ -1,16 +1,13 @@
-
-/* arreglar la imagen en el .card para poner a los perros
-
-
 .card{
     position: relative;
-    width:250px;
-    height:250px;
-    color: #2a9d8f;
-    background-image: none center no-repeat;
+    width:350px;
+    height:350px;
+    color: #f4a261;
+
     background-size: cover;
     border-radius: 20px;
     overflow:hidden;
+    object-fit: cover;
 }
 
 .card__content{
@@ -18,9 +15,9 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    border-top-left-radius: 20px;
+    padding: 5px;
+    background-color: #eeac80;
+    border-radius: 20px;
     transform: translateY(70px);
     transition:transform .25s;
 }
@@ -34,21 +31,23 @@
     height: 100px;
     transform: rotate(-175deg);
     border-radius: 50%;
-    box-shadow: inset 48px 48px #2a9d8f;
+    box-shadow: #0d1b2a;
 }
 
 .card__title{
-    color:#6a515e;
+    color:#343a40;
     line-height: 15px;
 }
 
-.card_subtitle{
-    display:block;
-    font-size: 12px;
-    margin-bottom: 10px;
+.card_item_img{
+    height: 190px;
+    width: 190px;
+    align-content: center;
+    object-fit: cover;
 }
 
 .card__description{
+    color:#343a40;
     font-size: 14px;
     opacity: 0;
     transition: opacity .5s;
@@ -79,4 +78,4 @@
     .cards__item {
       margin-bottom: 2rem;
     }
-} */
+} 

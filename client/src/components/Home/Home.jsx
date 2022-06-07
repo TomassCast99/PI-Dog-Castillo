@@ -3,14 +3,13 @@ import Card from "../Card/Card";
 import Paginated from "../Paginated/Paginated";
 import Navbar from "../Navbar/Navbar";
 import SortFilter from "../Filters/sortFilter";
-import CreateDog from "../Create/CreateDog";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getDogs } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 
 // import "../App.css";
-// import "./Home.css";
+import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -40,11 +39,10 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h1>
-        HenryDogs <i className="fa-solid fa-paw"></i>
-      </h1>
+    <div className="home-container">
+      <h1>HenryDogs</h1>
       <button
+        className="home-btn"
         onClick={(e) => {
           handleClick(e);
         }}
@@ -53,7 +51,11 @@ export default function Home() {
       </button>
       <Link to={"/dog"}>Create Dog</Link>
       <Navbar paginated={paginado} />
-      <SortFilter setCurrentPage={setCurrentPage} setAct={setAct} />
+      <SortFilter
+        setCurrentPage={setCurrentPage}
+        setAct={setAct}
+        className="home-btn"
+      />
       <Paginated
         dogsPerPage={dogsPerPage}
         useDogs={useDogs.length}
@@ -62,8 +64,9 @@ export default function Home() {
       {currentDogs.length > 0 ? (
         currentDogs.map((d) => {
           return (
-            <div key={d.id}>
+            <div key={d.id} className="card-container">
               <Card
+                id={d.id}
                 name={d.name}
                 image={d.image}
                 temperament={d.temperament}
@@ -73,7 +76,7 @@ export default function Home() {
           );
         })
       ) : (
-        <h1>Ups! Dog not found</h1>
+        <p>Ups! Dog not found</p>
       )}
     </div>
   );
