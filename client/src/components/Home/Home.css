@@ -1,6 +1,6 @@
 
 .home-container{
-    background-color: #e9c46a;
+    background-color: #cc9d288d;
     height: 75vp;
     width: 100%;
     display: flex;
@@ -11,27 +11,104 @@
     object-fit: contain;
 }
 
+.main{
+    border: 1px solid black;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+
+.card-dogs{
+padding: 10px;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 30px;
+grid-row-gap: 30px;
+}
+
+.navbar{
+    display: flex;
+    border: 1px solid red;
+    width: 90vw;
+    justify-content: space-between;
+}
+
 .home-container > h1{
- color: black;
+ color: #403634;
+ font-family: 'Montserrat', sans-serif;
  font-size: 50px;
  margin-top: 5px;
 }
 
 .home-container > p{
-    color:black;
+    color:#403634;
     font-size: 32px;
     margin-top: 8px;
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif;
 }
 
-.card-container{
-    display: grid;
-    grid-template-columns: repeat(4);
-    grid-template-rows: repeat(2);
-    grid-column-gap: 5px;
-    grid-row-gap: 20px;
-    height: 100vh;
-    margin-top: 35px;
+.home-btn{
+    height: 50px;
+    border: 1px solid yellow; 
+    padding: 0.8em 1.7em;
+    background-color: #59220e;
+    color:rgb(130, 130, 130);
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 20;
+    font-size: 15px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    z-index: 1;
+   }
+   
+   .home-btn::before, .home-btn::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    transition: 1s ease;
+   }
+   
+   .home-btn::before {
+    top: -1em;
+    left: -1em;
+   }
+   
+   .home-btn::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+   }
+   
+   .home-btn:hover::before, .home-btn:hover::after {
+    height: 410px;
+    width: 410px;
+   }
+   
+   .home-btn:hover {
+    color: rgb(219, 218, 218);
+   }
+   
+   .home-btn:active {
+    filter: brightness(.8);
+   }
+
+
+.sort{
+    border: 1px solid yellow;
+}
+.create-dog{
+    border: 1px solid black;
+    height: 25;
 }
 
 @media screen and (max-width: 960px){

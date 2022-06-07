@@ -7,7 +7,7 @@ import {
 } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-//import "../CSS/CreateDog.css";
+import "./CreateDog.css";
 import { validation } from "../Validations/Validation";
 
 export default function DogCreate() {
@@ -97,7 +97,7 @@ export default function DogCreate() {
           </Link>
           <h1 className="titleForm">Create Dog</h1>
         </div>
-        <div className="">
+        <div className="form__group">
           <form className="from" onSubmit={resState}>
             <div className="">
               <label className="title5">Name:</label>

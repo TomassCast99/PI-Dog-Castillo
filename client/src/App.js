@@ -1,6 +1,7 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import "./App.css";
 
 import LandingPage from "./components/Landing/landingPage";
 import Home from "./components/Home/Home.jsx";
@@ -10,7 +11,7 @@ import Details from "./components/Details/Details";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<Home />} />

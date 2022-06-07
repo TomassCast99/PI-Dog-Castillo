@@ -1,4 +1,5 @@
 import React from "react";
+import "./Paginated.css";
 
 export default function Paginated({ dogsPerPage, useDogs, paginated }) {
   const pageNumbers = [];

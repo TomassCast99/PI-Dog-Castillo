@@ -1,4 +1,49 @@
-*{
-    color:#db3a34;
-    font-family: 'Montserrat', sans-serif; 
-} 
+ html{
+     background-image: url(https://img.freepik.com/vector-gratis/marco-vector-perros-sobre-fondo-blanco_53876-127700.jpg?w=996&t=st=1654621848~exp=1654622448~hmac=12e6e50730807b5c1f4e987e4cea973a6b531ea49670a39c9a341d39d26d4542);
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     justify-content: center;
+
+ }
+.container{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    align-content:center ;
+    height: 100vh;
+}
+
+.tittle{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    color: #403634;
+}
+
+.sub-tittle{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    color: #403634;
+}
+
+.content{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    color: #403634;
+}
+
+.btn-land{
+    
+        padding: 8px 20px;
+        border-radius: 2px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+
+}
+.btn-land:hover {
+    background-color: #59220e;
+    color:#e5e5e5;
+    transition: all 0.3 ease-out;
+}

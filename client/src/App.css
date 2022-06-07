@@ -1,9 +1,12 @@
-*{
- box-sizing: border-box;
- font-family: 'Montserrat', sans-serif;
-} 
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* .App {
   text-align: center;
+  background-image: url(../src/components/Landing/marco-vector-perros-sobre-fondo-blanco_53876-127700.webp);;
 }
 
 .App-logo {
@@ -39,5 +42,5 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 

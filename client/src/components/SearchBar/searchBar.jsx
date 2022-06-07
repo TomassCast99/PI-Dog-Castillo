@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getDogs, getName } from "../../redux/actions/actions";
-//import "../CSS/Search.css";
+//import "./SearchBar.css";
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -18,12 +18,12 @@ export default function Search() {
 
   return (
     <div>
-      <div className="search">
+      <div class="textInputWrapper">
         <input
           onChange={(e) => handleInputChange(e)}
           type="text"
-          placeholder="Search Dog..."
-          className="buscador"
+          placeholder="Search"
+          className="textInput"
           value={name}
         />
       </div>

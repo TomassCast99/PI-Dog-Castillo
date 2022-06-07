@@ -40,63 +40,54 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1>HenryDogs</h1>
-      <button
-        className="home-btn"
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Reload Dogs
-      </button>
-      <Link to={"/dog"}>Create Dog</Link>
-      <Navbar paginated={paginado} />
-      <SortFilter
-        setCurrentPage={setCurrentPage}
-        setAct={setAct}
-        className="home-btn"
-      />
-      <Paginated
-        dogsPerPage={dogsPerPage}
-        useDogs={useDogs.length}
-        paginated={paginado}
-      />
-      {currentDogs.length > 0 ? (
-        currentDogs.map((d) => {
-          return (
-            <div key={d.id} className="card-container">
-              <Card
-                id={d.id}
-                name={d.name}
-                image={d.image}
-                temperament={d.temperament}
-                weight={d.weight}
-              />
-            </div>
-          );
-        })
-      ) : (
-        <p>Ups! Dog not found</p>
-      )}
+      <div className="navbar">
+        <h1>HenryDogs</h1>
+        <Navbar paginated={paginado} />
+
+        <button
+          className="home-btn"
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          Reload Dogs
+        </button>
+        <Link to={"/dog"} className="create-dog">
+          <button>Create Dog</button>
+        </Link>
+        <SortFilter
+          setCurrentPage={setCurrentPage}
+          setAct={setAct}
+          className="sort"
+        />
+      </div>
+      <div className="main">
+        <div className="paginado">
+          <Paginated
+            dogsPerPage={dogsPerPage}
+            useDogs={useDogs.length}
+            paginated={paginado}
+          />
+        </div>
+        <div className="card-dogs">
+          {currentDogs.length > 0 ? (
+            currentDogs.map((d) => {
+              return (
+                <Card
+                  key={d.id}
+                  id={d.id}
+                  name={d.name}
+                  image={d.image}
+                  temperament={d.temperament}
+                  weight={d.weight}
+                />
+              );
+            })
+          ) : (
+            <p>Ups! Dog not found</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
-
-// function Home() {
-//   return (
-//     <div className="home-container">
-//       <h1>Welcome Dog lovers</h1>
-//       <p>This is a web site for our four paws friends</p>
-//       <div className="home-btn">
-//         <Boton
-//           className="btn"
-//           buttonStyle="btn--outline"
-//           buttonSize="btn--large"
-//         >
-//           LETS SEE
-//         </Boton>
-//         <Footer></Footer>
-//       </div>
-//     </div>
-//   );
-// }

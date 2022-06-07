@@ -19,16 +19,17 @@ export default function Detail() {
 
   return (
     <div>
-      <div>
-        <Link to="/home">
-          <button className="boton4" onClick={resState}>
-            Go Home
-          </button>
-        </Link>
-      </div>
       {Object.keys(dogDetail).length > 0 ? (
         <main className="paginado2">
           <div>
+            <div>
+              <Link to="/home">
+                <button className="boton4" onClick={resState}>
+                  Home
+                </button>
+              </Link>
+            </div>
+
             <div>
               <img
                 className="imagdetalle"
