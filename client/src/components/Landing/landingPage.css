@@ -32,14 +32,12 @@
 }
 
 .btn-land{
-    
         padding: 8px 20px;
         border-radius: 2px;
         outline: none;
         border: none;
         cursor: pointer;
         font-size: 20px;
-
 }
 .btn-land:hover {
     background-color: #59220e;

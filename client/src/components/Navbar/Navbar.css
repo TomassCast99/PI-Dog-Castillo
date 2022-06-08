@@ -1,7 +1,22 @@
 .navbar-container{
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 8px;
-  grid-row-gap: 0px;
+grid-template-columns: repeat(6, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 5px;
+grid-row-gap: 0px;
+}
+
+.log-out{
+  padding: 8px 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.log-out:hover{
+  background-color: #59220e;
+  color:#e5e5e5;
+  transition: all 0.3 ease-out;
 }

@@ -43,59 +43,68 @@ export default function Navbar({ paginated }) {
 
   return (
     <div className="nav-container">
-      <Link to="/">
-        <button>Log Out</button>
-      </Link>
-      <button className="nav-links" onClick={handleCleanFilters} value="all">
-        Clean Filters
-      </button>
       <div>
-        <div className="nav-item">
-          <select value={weight} onChange={(e) => setWeight(e.target.value)}>
-            <option className="nav-links" value="Todos">
-              All
-            </option>
-            <option className="nav-links" value="light">
-              Light-Heavy
-            </option>
-            <option className="nav-links" value="heavy">
-              Heavy-Light
-            </option>
-          </select>
+        <Link to="/">
+          <button className="log-out">Log Out</button>
+        </Link>
+      </div>
 
-          <button onClick={(e) => handleClickWeight(e)}>Order weight</button>
+      <div>
+        <button className="nav-links" onClick={handleCleanFilters} value="all">
+          Clean Filters
+        </button>
+      </div>
+      <div>
+        <select value={weight} onChange={(e) => setWeight(e.target.value)}>
+          <option className="nav-links" value="Todos">
+            All
+          </option>
+          <option className="nav-links" value="light">
+            Light-Heavy
+          </option>
+          <option className="nav-links" value="heavy">
+            Heavy-Light
+          </option>
+        </select>
+        <button onClick={(e) => handleClickWeight(e)}>Order weight</button>
+      </div>
 
-          <Search />
-          <select
-            value={temperament}
-            onChange={(e) => setTemperament(e.target.value)}
-          >
-            <option className="nav-links" value="All">
-              Temperament
-            </option>
-            {useTemp &&
-              useTemp
-                .sort((a, b) => (a.name > b.name ? 1 : -1))
-                .map((t) => (
-                  <option key={t.id} value={t.name}>
-                    {" "}
-                    {t.name}{" "}
-                  </option>
-                ))}
-          </select>
-          <select value={origin} onChange={(e) => setOrigin(e.target.value)}>
-            <option className="nav-links" value="All">
-              All Dogs
-            </option>
-            <option className="nav-links" value="apiDogs">
-              Dogs
-            </option>
-            <option className="nav-links" value="dbDogs">
-              Created Dogs
-            </option>
-          </select>
-          <button onClick={(e) => handleClickFilter(e)}>Filter</button>
-        </div>
+      <div>
+        <Search />
+      </div>
+      <div>
+        <select
+          value={temperament}
+          onChange={(e) => setTemperament(e.target.value)}
+        >
+          <option className="nav-links" value="All">
+            Temperament
+          </option>
+          {useTemp &&
+            useTemp
+              .sort((a, b) => (a.name > b.name ? 1 : -1))
+              .map((t) => (
+                <option key={t.id} value={t.name}>
+                  {" "}
+                  {t.name}{" "}
+                </option>
+              ))}
+        </select>
+      </div>
+
+      <div>
+        <select value={origin} onChange={(e) => setOrigin(e.target.value)}>
+          <option className="nav-links" value="All">
+            All Dogs
+          </option>
+          <option className="nav-links" value="apiDogs">
+            Dogs
+          </option>
+          <option className="nav-links" value="dbDogs">
+            Created Dogs
+          </option>
+        </select>
+        <button onClick={(e) => handleClickFilter(e)}>Filter</button>
       </div>
     </div>
   );

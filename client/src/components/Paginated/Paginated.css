@@ -1,7 +1,6 @@
 .paginated{
     display: flex;
-    justify-content: space-between;
-    border: 1px solid green;
+    justify-content: center;
     width: 80%;
     margin: 0 auto;
     padding: 5px;

@@ -92,8 +92,10 @@ export default function DogCreate() {
     <div className="formPerfil">
       <div className="up-things">
         <Link to="/home">
-          <button className="boton5">Home</button>
+          <button className="boton">Home</button>
         </Link>
+      </div>
+      <div>
         <h1 className="titleForm">Create Dog</h1>
       </div>
 
@@ -217,7 +219,11 @@ export default function DogCreate() {
             return (
               <div key={i} className="concatFiltro">
                 <button
-                  style={{ color: "white", backgroundColor: "red" }}
+                  style={{
+                    color: "white",
+                    backgroundColor: "red",
+                    borderRadius: "50%",
+                  }}
                   onClick={handleDelete}
                   value={nombre}
                 >

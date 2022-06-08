@@ -51,9 +51,9 @@ export default function Home() {
         >
           Reload Dogs
         </button>
-        <button className="create-dog">
-          <Link to={"/dog"}>Create Dog</Link>
-        </button>
+        <Link to={"/dog"}>
+          <button className="create-dog"> Create Dog</button>
+        </Link>
         <SortFilter
           setCurrentPage={setCurrentPage}
           setAct={setAct}
