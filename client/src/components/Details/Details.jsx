@@ -29,12 +29,11 @@ export default function Detail() {
                 </button>
               </Link>
             </div>
-
             <div>
               <img
                 className="imagdetalle"
                 src={dogDetail.image}
-                alt="no tiene imagen"
+                alt={dogDetail.name}
               />
             </div>
           </div>

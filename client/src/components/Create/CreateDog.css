@@ -1,4 +1,8 @@
-.form__group{
-  align-items: center;
-  
+
+.form{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 3px;
 }

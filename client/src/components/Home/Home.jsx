@@ -42,7 +42,6 @@ export default function Home() {
     <div className="home-container">
       <div className="navbar">
         <h1>HenryDogs</h1>
-        <Navbar paginated={paginado} />
 
         <button
           className="home-btn"
@@ -52,15 +51,16 @@ export default function Home() {
         >
           Reload Dogs
         </button>
-        <Link to={"/dog"} className="create-dog">
-          <button>Create Dog</button>
-        </Link>
+        <button className="create-dog">
+          <Link to={"/dog"}>Create Dog</Link>
+        </button>
         <SortFilter
           setCurrentPage={setCurrentPage}
           setAct={setAct}
           className="sort"
         />
       </div>
+      <Navbar paginated={paginado} />
       <div className="main">
         <div className="paginado">
           <Paginated

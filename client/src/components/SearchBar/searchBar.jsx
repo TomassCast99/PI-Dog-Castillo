@@ -18,7 +18,7 @@ export default function Search() {
 
   return (
     <div>
-      <div class="textInputWrapper">
+      <div className="textInputWrapper">
         <input
           onChange={(e) => handleInputChange(e)}
           type="text"
