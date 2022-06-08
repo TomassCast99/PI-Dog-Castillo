@@ -1,17 +1,17 @@
 .paginado2{
     font-family: 'Montserrat', sans-serif;
-    align-content: center;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 0px;
+    grid-column-gap: 5px;
     grid-row-gap: 0px;
+
 }
 
 .imagdetalle{
     border-radius: 15%;
     border:5px solid #f79256;
-    margin: 80px;
+    margin: 50px;
     width: 400px;
     height: 400px;
 }
@@ -20,7 +20,7 @@
 }
 .cardDetalle{
     width: 300px;
-    height: 425px;
+    height: 450px;
     border: 2px solid #f79256;
     margin: 30px;
     background-color: rgba(201, 192, 192, 0.856);
@@ -28,26 +28,18 @@
     font-family:'Montserrat', sans-serif;
     color:  #f79256;
 }  
-.boton4{
-
-    text-decoration: none;
-    display: grid;
-
-    align-content: center;
-    color:#f5f8f8;
-    background-color:#f79256;
-    font-family: 'Montserrat', sans-serif;
+.botonDetails{
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 18px;
-    width: 100px;
-    height: 44px;
-    margin-top:12px;
+    font-size: 20px;
 }
-.boton4:hover{
-    background-color: #f5f8f8;  
-    color: #f79256;
-
+.botonDetails:hover {
+background-color: #59220e;
+color:#e5e5e5;
+transition: all 0.3 ease-out;
 }
 
 .base3{
